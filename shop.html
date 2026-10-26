@@ -425,24 +425,26 @@
     }
 
     function orderSneaker(productName, price, sizeId) {
-      const size = document.getElementById(sizeId).value;
+  const size = document.getElementById(sizeId).value;
 
-      if (!size) {
-        alert('Please select your shoe size first.');
-        return;
-      }
+  if (!size) {
+    alert('Please select your shoe size first.');
+    return;
+  }
 
-      const message =
-        'Hello Tariq Sneakers Store! I would like to order: ' +
-        productName +
-        '. Size: ' + size +
-        '. Price: KSh ' + price.toLocaleString('en-KE') + '.';
+  const message =
+    'Hello Tariq Sneakers Store! I would like to order:\n\n' +
+    'Product: ' + productName + '\n' +
+    'Shoe size: ' + size + '\n' +
+    'Price: KSh ' + price.toLocaleString('en-KE') + '\n\n' +
+    'Please confirm availability and delivery details.';
 
-      const whatsappUrl =
-        'https://wa.me/?text=' + encodeURIComponent(message);
+  const whatsappUrl =
+    'https://wa.me/254713838941?text=' +
+    encodeURIComponent(message);
 
-      window.open(whatsappUrl, '_blank');
-    }
+  window.open(whatsappUrl, '_blank');
+}
   </script>
 
 </body>
