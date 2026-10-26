@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop Sneakers | Tariq Sneakers Store</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .shop-heading {
+      text-align: center;
+      padding: 60px 20px 30px;
+    }
+
+    .shop-heading h1 {
+      font-size: 42px;
+      margin-bottom: 10px;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 25px;
+      padding: 30px 8% 80px;
+    }
+
+    .product-card {
+      border: 1px solid #eeeeee;
+      border-radius: 8px;
+      overflow: hidden;
+      background: white;
+      transition: transform 0.3s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      background: #f4f4f4;
+    }
+
+    .product-info {
+      padding: 20px;
+    }
+
+    .product-info h2 {
+      font-size: 19px;
+      margin-bottom: 8px;
+    }
+
+    .price {
+      color: #e63946;
+      font-weight: bold;
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+
+    .product-info select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 12px;
+      border: 1px solid #dddddd;
+      border-radius: 4px;
+    }
+
+    .order-button {
+      display: block;
+      background: #111111;
+      color: white;
+      text-align: center;
+      padding: 12px;
+      font-weight: bold;
+      font-size: 13px;
+      border-radius: 4px;
+    }
+
+    .order-button:hover {
+      background: #e63946;
+    }
+
+    .note {
+      font-size: 12px;
+      color: #666666;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a class="logo" href="index.html">TARIQ<span>.</span></a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <section class="shop-heading">
+    <p class="eyebrow">FIND YOUR PERFECT PAIR</p>
+    <h1>Shop Sneakers</h1>
+    <p>Fresh styles for every step.</p>
+  </section>
+
+  <main class="products">
+
+    <article class="product-card">
+      <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=80"
+           alt="Red athletic sneaker">
+      <div class="product-info">
+        <h2>Red Sport Sneaker</h2>
+        <p class="price">KSh 3,500</p>
+        <label for="size1">Choose size:</label>
+        <select id="size1">
+          <option value="">Select size</option>
+          <option>38</option><option>39</option>
+          <option>40</option><option>41</option>
+          <option>42</option><option>43</option>
+          <option>44</option>
+        </select>
+        <a class="order-button" href="contact.html">ORDER NOW</a>
+      </div>
+    </article>
+
+    <article class="product-card">
+      <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=700&q=80"
+           alt="Classic casual sneaker">
+      <div class="product-info">
+        <h2>Classic Street Sneaker</h2>
+        <p class="price">KSh 3,000</p>
+        <label for="size2">Choose size:</label>
+        <select id="size2">
+          <option value="">Select size</option>
+          <option>38</option><option>39</option>
+          <option>40</option><option>41</option>
+          <option>42</option><option>43</option>
+          <option>44</option>
+        </select>
+        <a class="order-button" href="contact.html">ORDER NOW</a>
+      </div>
+    </article>
+
+    <article class="product-card">
+      <img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=700&q=80"
+           alt="Modern white sneaker">
+      <div class="product-info">
+        <h2>Everyday White Sneaker</h2>
+        <p class="price">KSh 2,800</p>
+        <label for="size3">Choose size:</label>
+        <select id="size3">
+          <option value="">Select size</option>
+          <option>38</option><option>39</option>
+          <option>40</option><option>41</option>
+          <option>42</option><option>43</option>
+          <option>44</option>
+        </select>
+        <a class="order-button" href="contact.html">ORDER NOW</a>
+      </div>
+    </article>
+
+  </main>
+
+  <footer>
+    <p>TARIQ SNEAKERS STORE</p>
+    <p>Step into style. One pair at a time.</p>
+    <p>&copy; 2026 Tariq Sneakers Store</p>
+  </footer>
+
+</body>
+</html>
