@@ -5,93 +5,153 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shop Sneakers | Tariq Sneakers Store</title>
   <link rel="stylesheet" href="style.css">
+
   <style>
-    .shop-heading {
+    .shop-banner {
+      background: #f4f4f4;
       text-align: center;
-      padding: 60px 20px 30px;
+      padding: 65px 20px;
     }
 
-    .shop-heading h1 {
-      font-size: 42px;
-      margin-bottom: 10px;
+    .shop-banner h1 {
+      font-size: clamp(32px, 5vw, 48px);
+      margin-bottom: 12px;
     }
 
-    .products {
+    .shop-banner p {
+      color: #666;
+    }
+
+    .shop-products {
+      max-width: 1250px;
+      margin: auto;
+      padding: 45px 25px 80px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 25px;
-      padding: 30px 8% 80px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 28px;
     }
 
-    .product-card {
-      border: 1px solid #eeeeee;
-      border-radius: 8px;
+    .sneaker-card {
+      border: 1px solid #eee;
+      border-radius: 10px;
       overflow: hidden;
       background: white;
-      transition: transform 0.3s;
+      transition: transform 0.25s, box-shadow 0.25s;
     }
 
-    .product-card:hover {
+    .sneaker-card:hover {
       transform: translateY(-5px);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.09);
     }
 
-    .product-card img {
+    .sneaker-card img {
       width: 100%;
-      height: 240px;
+      height: 250px;
+      display: block;
       object-fit: cover;
-      background: #f4f4f4;
+      background: #f5f5f5;
     }
 
-    .product-info {
+    .sneaker-info {
       padding: 20px;
     }
 
-    .product-info h2 {
+    .sneaker-info h2 {
       font-size: 19px;
-      margin-bottom: 8px;
+      margin-bottom: 7px;
     }
 
-    .price {
-      color: #e63946;
+    .sneaker-description {
+      font-size: 13px;
+      color: #777;
+      margin-bottom: 12px;
+    }
+
+    .sneaker-price {
+      font-size: 22px;
       font-weight: bold;
-      font-size: 20px;
+      color: #e63946;
       margin-bottom: 15px;
     }
 
-    .product-info select {
+    .sneaker-info label {
+      display: block;
+      font-size: 13px;
+      font-weight: bold;
+      margin-bottom: 7px;
+    }
+
+    .sneaker-info select {
       width: 100%;
-      padding: 10px;
-      margin-bottom: 12px;
-      border: 1px solid #dddddd;
-      border-radius: 4px;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background: white;
+      margin-bottom: 14px;
+      font-size: 14px;
     }
 
     .order-button {
       display: block;
-      background: #111111;
+      width: 100%;
+      padding: 13px;
+      background: #111;
       color: white;
       text-align: center;
-      padding: 12px;
+      border: none;
+      border-radius: 5px;
       font-weight: bold;
       font-size: 13px;
-      border-radius: 4px;
+      cursor: pointer;
     }
 
     .order-button:hover {
       background: #e63946;
     }
 
-    .note {
+    .stock-note {
       font-size: 12px;
-      color: #666666;
-      margin-top: 10px;
+      color: #777;
+      margin-top: 12px;
+    }
+
+    .shop-notice {
+      text-align: center;
+      padding: 0 20px 40px;
+      color: #666;
+      font-size: 13px;
+    }
+
+    @media (max-width: 850px) {
+      .shop-products {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+        padding: 30px 18px 60px;
+      }
+
+      .sneaker-card img {
+        height: 210px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .shop-products {
+        grid-template-columns: 1fr;
+        padding: 25px 20px 50px;
+      }
+
+      .sneaker-card img {
+        height: 260px;
+      }
     }
   </style>
 </head>
+
 <body>
 
   <header>
     <a class="logo" href="index.html">TARIQ<span>.</span></a>
+
     <nav>
       <a href="index.html">Home</a>
       <a href="shop.html">Shop</a>
@@ -100,75 +160,216 @@
     </nav>
   </header>
 
-  <section class="shop-heading">
-    <p class="eyebrow">FIND YOUR PERFECT PAIR</p>
-    <h1>Shop Sneakers</h1>
-    <p>Fresh styles for every step.</p>
+  <section class="shop-banner">
+    <p class="eyebrow">FRESH LOOKS. FRESH STEPS.</p>
+    <h1>Our Sneaker Collection</h1>
+    <p>Find your style. Choose your pair. Step out confidently.</p>
   </section>
 
-  <main class="products">
+  <main class="shop-products">
 
-    <article class="product-card">
-      <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=80"
-           alt="Red athletic sneaker">
-      <div class="product-info">
-        <h2>Red Sport Sneaker</h2>
-        <p class="price">KSh 3,500</p>
-        <label for="size1">Choose size:</label>
+    <!-- PRODUCT 1 -->
+    <article class="sneaker-card">
+      <img
+        src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=80"
+        alt="Red sporty sneaker"
+        loading="lazy">
+
+      <div class="sneaker-info">
+        <h2>Red Sport Sneakers</h2>
+        <p class="sneaker-description">Bold style for everyday wear.</p>
+        <p class="sneaker-price">KSh 3,500</p>
+
+        <label for="size1">Select shoe size</label>
         <select id="size1">
-          <option value="">Select size</option>
+          <option value="">Choose size</option>
           <option>38</option><option>39</option>
           <option>40</option><option>41</option>
-          <option>42</option><option>43</option>
-          <option>44</option>
+          <option>42</option><option>43</option><option>44</option>
         </select>
-        <a class="order-button" href="contact.html">ORDER NOW</a>
+
+        <button class="order-button"
+          onclick="orderSneaker('Red Sport Sneakers', 3500, 'size1')">
+          ORDER NOW
+        </button>
+        <p class="stock-note">Confirm size availability when ordering.</p>
       </div>
     </article>
 
-    <article class="product-card">
-      <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=700&q=80"
-           alt="Classic casual sneaker">
-      <div class="product-info">
-        <h2>Classic Street Sneaker</h2>
-        <p class="price">KSh 3,000</p>
-        <label for="size2">Choose size:</label>
+    <!-- PRODUCT 2 -->
+    <article class="sneaker-card">
+      <img
+        src="https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=700&q=80"
+        alt="Classic casual sneakers"
+        loading="lazy">
+
+      <div class="sneaker-info">
+        <h2>Classic Street Sneakers</h2>
+        <p class="sneaker-description">A versatile everyday look.</p>
+        <p class="sneaker-price">KSh 3,000</p>
+
+        <label for="size2">Select shoe size</label>
         <select id="size2">
-          <option value="">Select size</option>
+          <option value="">Choose size</option>
           <option>38</option><option>39</option>
           <option>40</option><option>41</option>
-          <option>42</option><option>43</option>
-          <option>44</option>
+          <option>42</option><option>43</option><option>44</option>
         </select>
-        <a class="order-button" href="contact.html">ORDER NOW</a>
+
+        <button class="order-button"
+          onclick="orderSneaker('Classic Street Sneakers', 3000, 'size2')">
+          ORDER NOW
+        </button>
+        <p class="stock-note">Confirm size availability when ordering.</p>
       </div>
     </article>
 
-    <article class="product-card">
-      <img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=700&q=80"
-           alt="Modern white sneaker">
-      <div class="product-info">
-        <h2>Everyday White Sneaker</h2>
-        <p class="price">KSh 2,800</p>
-        <label for="size3">Choose size:</label>
+    <!-- PRODUCT 3 -->
+    <article class="sneaker-card">
+      <img
+        src="https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=700&q=80"
+        alt="Modern fashion sneakers"
+        loading="lazy">
+
+      <div class="sneaker-info">
+        <h2>Everyday Fashion Sneakers</h2>
+        <p class="sneaker-description">Simple style for casual outfits.</p>
+        <p class="sneaker-price">KSh 2,800</p>
+
+        <label for="size3">Select shoe size</label>
         <select id="size3">
-          <option value="">Select size</option>
+          <option value="">Choose size</option>
           <option>38</option><option>39</option>
           <option>40</option><option>41</option>
-          <option>42</option><option>43</option>
-          <option>44</option>
+          <option>42</option><option>43</option><option>44</option>
         </select>
-        <a class="order-button" href="contact.html">ORDER NOW</a>
+
+        <button class="order-button"
+          onclick="orderSneaker('Everyday Fashion Sneakers', 2800, 'size3')">
+          ORDER NOW
+        </button>
+        <p class="stock-note">Confirm size availability when ordering.</p>
+      </div>
+    </article>
+
+    <!-- PRODUCT 4 -->
+    <article class="sneaker-card">
+      <img
+        src="https://images.unsplash.com/photo-1495555961986-6d4c1ecb7be3?auto=format&fit=crop&w=700&q=80"
+        alt="Athletic running shoes"
+        loading="lazy">
+
+      <div class="sneaker-info">
+        <h2>Active Running Sneakers</h2>
+        <p class="sneaker-description">Sporty style for active days.</p>
+        <p class="sneaker-price">KSh 3,800</p>
+
+        <label for="size4">Select shoe size</label>
+        <select id="size4">
+          <option value="">Choose size</option>
+          <option>38</option><option>39</option>
+          <option>40</option><option>41</option>
+          <option>42</option><option>43</option><option>44</option>
+        </select>
+
+        <button class="order-button"
+          onclick="orderSneaker('Active Running Sneakers', 3800, 'size4')">
+          ORDER NOW
+        </button>
+        <p class="stock-note">Confirm size availability when ordering.</p>
+      </div>
+    </article>
+
+    <!-- PRODUCT 5 -->
+    <article class="sneaker-card">
+      <img
+        src="https://images.unsplash.com/photo-1460353581641-37baddab0fa2?auto=format&fit=crop&w=700&q=80"
+        alt="Modern low-top sneakers"
+        loading="lazy">
+
+      <div class="sneaker-info">
+        <h2>Urban Low-Top Sneakers</h2>
+        <p class="sneaker-description">Street-inspired everyday comfort.</p>
+        <p class="sneaker-price">KSh 3,200</p>
+
+        <label for="size5">Select shoe size</label>
+        <select id="size5">
+          <option value="">Choose size</option>
+          <option>38</option><option>39</option>
+          <option>40</option><option>41</option>
+          <option>42</option><option>43</option><option>44</option>
+        </select>
+
+        <button class="order-button"
+          onclick="orderSneaker('Urban Low-Top Sneakers', 3200, 'size5')">
+          ORDER NOW
+        </button>
+        <p class="stock-note">Confirm size availability when ordering.</p>
+      </div>
+    </article>
+
+    <!-- PRODUCT 6 -->
+    <article class="sneaker-card">
+      <img
+        src="https://images.unsplash.com/photo-1495555961986-6d4c1ecb7be3?auto=format&fit=crop&w=700&q=80"
+        alt="Sport-inspired casual shoes"
+        loading="lazy">
+
+      <div class="sneaker-info">
+        <h2>Daily Comfort Sneakers</h2>
+        <p class="sneaker-description">An easy choice for everyday outfits.</p>
+        <p class="sneaker-price">KSh 2,500</p>
+
+        <label for="size6">Select shoe size</label>
+        <select id="size6">
+          <option value="">Choose size</option>
+          <option>38</option><option>39</option>
+          <option>40</option><option>41</option>
+          <option>42</option><option>43</option><option>44</option>
+        </select>
+
+        <button class="order-button"
+          onclick="orderSneaker('Daily Comfort Sneakers', 2500, 'size6')">
+          ORDER NOW
+        </button>
+        <p class="stock-note">Confirm size availability when ordering.</p>
       </div>
     </article>
 
   </main>
+
+  <p class="shop-notice">
+    Prices shown are examples. Please confirm prices and available sizes before purchase.
+  </p>
 
   <footer>
     <p>TARIQ SNEAKERS STORE</p>
     <p>Step into style. One pair at a time.</p>
     <p>&copy; 2026 Tariq Sneakers Store</p>
   </footer>
+
+  <script>
+    function orderSneaker(product, price, sizeId) {
+      const size = document.getElementById(sizeId).value;
+
+      if (!size) {
+        alert("Please select your shoe size first.");
+        return;
+      }
+
+      const message =
+        "Hello Tariq Sneakers Store! I would like to order:\n" +
+        "Product: " + product + "\n" +
+        "Price: KSh " + price.toLocaleString("en-KE") + "\n" +
+        "Shoe size: " + size + "\n\n" +
+        "Please confirm availability and delivery details.";
+
+      const url =
+        "https://wa.me/?text=" + encodeURIComponent(message);
+
+      window.open(url, "_blank");
+    }
+  </script>
 
 </body>
 </html>
