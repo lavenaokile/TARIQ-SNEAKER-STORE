@@ -3,24 +3,76 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Shop Sneakers | Tariq Sneakers Store</title>
+  <meta name="description" content="Shop men's, ladies' and kids' sneakers at Tariq Sneakers Store. Choose your style and order through WhatsApp.">
+
   <link rel="stylesheet" href="style.css">
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #f7f7f7;
+      color: #171717;
+      font-family: Arial, sans-serif;
+    }
+
+    .store-header {
+      background: #111;
+      color: white;
+      padding: 18px 15px;
+      text-align: center;
+    }
+
+    .store-header h2 {
+      margin: 0 0 14px;
+      color: #fff;
+    }
+
+    .store-header h2 span {
+      color: #ff233f;
+    }
+
+    .store-header nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 22px;
+    }
+
+    .store-header nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .store-header nav a:hover {
+      color: #ff233f;
+    }
+
     .shop-container {
-      max-width: 1200px;
+      max-width: 1250px;
       margin: auto;
-      padding: 25px 16px;
+      padding: 25px 16px 45px;
     }
 
     .shop-heading {
       text-align: center;
-      margin-bottom: 25px;
+      padding: 15px 0;
     }
 
     .shop-heading h1 {
-      font-size: 32px;
+      font-size: 34px;
       margin-bottom: 10px;
+    }
+
+    .shop-heading p {
+      color: #555;
+      line-height: 1.6;
     }
 
     .category-filters {
@@ -32,57 +84,76 @@
     }
 
     .filter-button {
-      background: #111;
-      color: white;
-      border: 2px solid #111;
-      padding: 10px 20px;
-      border-radius: 5px;
+      background: #fff;
+      color: #111;
+      border: 1px solid #111;
+      padding: 11px 20px;
+      border-radius: 25px;
       cursor: pointer;
       font-size: 15px;
+      font-weight: bold;
     }
 
     .filter-button:hover,
     .filter-button.active {
       background: #e60023;
+      color: white;
       border-color: #e60023;
+    }
+
+    .results-count {
+      margin: 15px 0;
+      color: #555;
     }
 
     .products-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 22px;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 20px;
     }
 
     .product-card {
-      border: 1px solid #ddd;
+      background: white;
       border-radius: 10px;
       overflow: hidden;
-      background: white;
-      color: #111;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-      padding-bottom: 18px;
+      border: 1px solid #e4e4e4;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+      display: flex;
+      flex-direction: column;
     }
 
     .product-card img {
       width: 100%;
-      height: 210px;
+      height: 220px;
       object-fit: cover;
-      display: block;
+      background: #eee;
     }
 
     .product-info {
       padding: 15px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
     }
 
     .product-category {
       color: #e60023;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: bold;
       text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
     .product-info h3 {
+      font-size: 17px;
       margin: 8px 0;
+    }
+
+    .product-description {
+      color: #666;
+      font-size: 13px;
+      line-height: 1.5;
+      flex: 1;
     }
 
     .product-price {
@@ -93,15 +164,18 @@
 
     .product-info label {
       display: block;
-      margin: 12px 0 5px;
+      margin: 8px 0 6px;
+      font-size: 14px;
+      font-weight: bold;
     }
 
     .product-info select {
       width: 100%;
       padding: 10px;
-      border: 1px solid #bbb;
+      border: 1px solid #ccc;
       border-radius: 5px;
       background: white;
+      font-size: 14px;
     }
 
     .order-button {
@@ -109,10 +183,11 @@
       background: #e60023;
       color: white;
       border: none;
-      padding: 12px;
       border-radius: 5px;
+      padding: 12px 8px;
+      margin-top: 12px;
       cursor: pointer;
-      margin-top: 14px;
+      font-size: 14px;
       font-weight: bold;
     }
 
@@ -120,27 +195,52 @@
       background: #111;
     }
 
-    .no-products {
+    .store-footer {
+      background: #111;
+      color: white;
       text-align: center;
-      padding: 20px;
+      padding: 25px 15px;
+      line-height: 1.8;
     }
 
-    @media (max-width: 480px) {
-      .shop-heading h1 {
-        font-size: 26px;
-      }
+    .store-footer p {
+      margin: 5px 0;
+    }
 
+    @media (max-width: 1000px) {
+      .products-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 650px) {
       .products-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 12px;
       }
 
       .product-card img {
-        height: 145px;
+        height: 155px;
       }
 
       .product-info {
         padding: 10px;
+      }
+
+      .product-info h3 {
+        font-size: 15px;
+      }
+
+      .product-price {
+        font-size: 17px;
+      }
+
+      .shop-heading h1 {
+        font-size: 27px;
+      }
+
+      .filter-button {
+        padding: 9px 14px;
       }
     }
   </style>
@@ -148,7 +248,9 @@
 
 <body>
 
-  <header>
+  <header class="store-header">
+    <h2>TARIQ <span>SNEAKERS</span> STORE</h2>
+
     <nav>
       <a href="index.html">Home</a>
       <a href="shop.html">Shop</a>
@@ -160,291 +262,194 @@
   <main class="shop-container">
 
     <section class="shop-heading">
-      <h1>Our Sneaker Collection</h1>
-      <p>Step out in style with Tariq Sneakers Store.</p>
-      <p>Quality sneakers for men, ladies and kids.</p>
+      <h1>Find Your Perfect Sneakers 👟</h1>
+      <p>Fresh styles for every step. Shop men's, ladies' and kids' shoes.</p>
+      <p>Choose your favourite pair and order directly through WhatsApp!</p>
     </section>
 
     <div class="category-filters">
-      <button class="filter-button active"
-        onclick="filterProducts('all', this)">All Shoes</button>
-
-      <button class="filter-button"
-        onclick="filterProducts('men', this)">Men</button>
-
-      <button class="filter-button"
-        onclick="filterProducts('ladies', this)">Ladies</button>
-
-      <button class="filter-button"
-        onclick="filterProducts('kids', this)">Kids</button>
+      <button class="filter-button active" data-filter="all">
+        All Shoes
+      </button>
+      <button class="filter-button" data-filter="men">
+        Men
+      </button>
+      <button class="filter-button" data-filter="ladies">
+        Ladies
+      </button>
+      <button class="filter-button" data-filter="kids">
+        Kids
+      </button>
     </div>
 
-    <section class="products-grid" id="productsGrid">
+    <p class="results-count" id="resultsCount">
+      Showing 30 products
+    </p>
 
-      <!-- MEN'S SHOES -->
+    <section class="products-grid" id="productsGrid"></section>
 
-      <article class="product-card" data-category="men">
-        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80"
-          alt="Red sports sneakers">
-        <div class="product-info">
-          <span class="product-category">Men</span>
-          <h3>Red Sport Sneakers</h3>
-          <p>Comfortable sporty style.</p>
-          <p class="product-price">KSh 3,500</p>
-          <label for="size1">Select size:</label>
-          <select id="size1" class="shoe-size">
-            <option value="">Choose size</option>
-            <option>36</option><option>37</option><option>38</option>
-            <option>39</option><option>40</option><option>41</option>
-            <option>42</option><option>43</option><option>44</option>
-            <option>45</option>
-          </select>
-          <button class="order-button"
-            onclick="orderSneaker('Red Sport Sneakers', 3500, 'size1')">
-            Order on WhatsApp
-          </button>
-        </div>
-      </article>
-
-      <article class="product-card" data-category="men">
-        <img src="https://images.unsplash.com/photo-1495555961986-6d4c1ecb7be3?auto=format&fit=crop&w=600&q=80"
-          alt="Classic casual sneakers">
-        <div class="product-info">
-          <span class="product-category">Men</span>
-          <h3>Classic Street Sneakers</h3>
-          <p>Perfect for everyday wear.</p>
-          <p class="product-price">KSh 3,000</p>
-          <label for="size2">Select size:</label>
-          <select id="size2" class="shoe-size">
-            <option value="">Choose size</option>
-            <option>36</option><option>37</option><option>38</option>
-            <option>39</option><option>40</option><option>41</option>
-            <option>42</option><option>43</option><option>44</option>
-            <option>45</option>
-          </select>
-          <button class="order-button"
-            onclick="orderSneaker('Classic Street Sneakers', 3000, 'size2')">
-            Order on WhatsApp
-          </button>
-        </div>
-      </article>
-
-      <article class="product-card" data-category="men">
-        <img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=600&q=80"
-          alt="Modern low-top sneakers">
-        <div class="product-info">
-          <span class="product-category">Men</span>
-          <h3>Urban Low-Top Sneakers</h3>
-          <p>Modern looks for every day.</p>
-          <p class="product-price">KSh 3,200</p>
-          <label for="size3">Select size:</label>
-          <select id="size3" class="shoe-size">
-            <option value="">Choose size</option>
-            <option>36</option><option>37</option><option>38</option>
-            <option>39</option><option>40</option><option>41</option>
-            <option>42</option><option>43</option><option>44</option>
-            <option>45</option>
-          </select>
-          <button class="order-button"
-            onclick="orderSneaker('Urban Low-Top Sneakers', 3200, 'size3')">
-            Order on WhatsApp
-          </button>
-        </div>
-      </article>
-
-      <!-- LADIES' SHOES -->
-
-      <article class="product-card" data-category="ladies">
-        <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=600&q=80"
-          alt="Ladies fashion footwear">
-        <div class="product-info">
-          <span class="product-category">Ladies</span>
-          <h3>Chic Fashion Sneakers</h3>
-          <p>Stylish shoes for casual outings.</p>
-          <p class="product-price">KSh 2,800</p>
-          <label for="size4">Select size:</label>
-          <select id="size4" class="shoe-size">
-            <option value="">Choose size</option>
-            <option>36</option><option>37</option><option>38</option>
-            <option>39</option><option>40</option><option>41</option>
-            <option>42</option><option>43</option><option>44</option>
-            <option>45</option>
-          </select>
-          <button class="order-button"
-            onclick="orderSneaker('Chic Fashion Sneakers', 2800, 'size4')">
-            Order on WhatsApp
-          </button>
-        </div>
-      </article>
-
-      <article class="product-card" data-category="ladies">
-        <img src="https://images.unsplash.com/photo-1460353581641-37baddab0fa2?auto=format&fit=crop&w=600&q=80"
-          alt="Ladies sporty sneakers">
-        <div class="product-info">
-          <span class="product-category">Ladies</span>
-          <h3>Active Running Sneakers</h3>
-          <p>Made for an active lifestyle.</p>
-          <p class="product-price">KSh 3,800</p>
-          <label for="size5">Select size:</label>
-          <select id="size5" class="shoe-size">
-            <option value="">Choose size</option>
-            <option>36</option><option>37</option><option>38</option>
-            <option>39</option><option>40</option><option>41</option>
-            <option>42</option><option>43</option><option>44</option>
-            <option>45</option>
-          </select>
-          <button class="order-button"
-            onclick="orderSneaker('Active Running Sneakers', 3800, 'size5')">
-            Order on WhatsApp
-          </button>
-        </div>
-      </article>
-
-      <article class="product-card" data-category="ladies">
-        <img src="https://images.unsplash.com/photo-1495555961986-6d4c1ecb7be3?auto=format&fit=crop&w=600&q=80"
-          alt="Ladies everyday sneakers">
-        <div class="product-info">
-          <span class="product-category">Ladies</span>
-          <h3>Everyday Comfort Shoes</h3>
-          <p>Easy-to-wear everyday style.</p>
-          <p class="product-price">KSh 2,500</p>
-          <label for="size6">Select size:</label>
-          <select id="size6" class="shoe-size">
-            <option value="">Choose size</option>
-            <option>36</option><option>37</option><option>38</option>
-            <option>39</option><option>40</option><option>41</option>
-            <option>42</option><option>43</option><option>44</option>
-            <option>45</option>
-          </select>
-          <button class="order-button"
-            onclick="orderSneaker('Everyday Comfort Shoes', 2500, 'size6')">
-            Order on WhatsApp
-          </button>
-        </div>
-      </article>
-
-      <!-- KIDS' SHOES -->
-
-      <article class="product-card" data-category="kids">
-        <img src="https://images.unsplash.com/photo-1514989940723-e8e51635b782?auto=format&fit=crop&w=600&q=80"
-          alt="Children's casual shoes">
-        <div class="product-info">
-          <span class="product-category">Kids</span>
-          <h3>Kids Everyday Sneakers</h3>
-          <p>Comfort for little feet.</p>
-          <p class="product-price">KSh 1,800</p>
-          <label for="size7">Select kids' size:</label>
-          <select id="size7" class="shoe-size">
-            <option value="">Choose size</option>
-            <option>25</option><option>26</option><option>27</option>
-            <option>28</option><option>29</option><option>30</option>
-            <option>31</option><option>32</option><option>33</option>
-            <option>34</option><option>35</option>
-          </select>
-          <button class="order-button"
-            onclick="orderSneaker('Kids Everyday Sneakers', 1800, 'size7')">
-            Order on WhatsApp
-          </button>
-        </div>
-      </article>
-
-      <article class="product-card" data-category="kids">
-        <img src="https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?auto=format&fit=crop&w=600&q=80"
-          alt="Children's sporty shoes">
-        <div class="product-info">
-          <span class="product-category">Kids</span>
-          <h3>Kids Sport Sneakers</h3>
-          <p>For playtime and adventures.</p>
-          <p class="product-price">KSh 2,200</p>
-          <label for="size8">Select kids' size:</label>
-          <select id="size8" class="shoe-size">
-            <option value="">Choose size</option>
-            <option>25</option><option>26</option><option>27</option>
-            <option>28</option><option>29</option><option>30</option>
-            <option>31</option><option>32</option><option>33</option>
-            <option>34</option><option>35</option>
-          </select>
-          <button class="order-button"
-            onclick="orderSneaker('Kids Sport Sneakers', 2200, 'size8')">
-            Order on WhatsApp
-          </button>
-        </div>
-      </article>
-
-      <article class="product-card" data-category="kids">
-        <img src="https://images.unsplash.com/photo-151-9238263530-99bdd11df2ea?auto=format&fit=crop&w=600&q=80"
-          alt="Children's casual sneakers">
-        <div class="product-info">
-          <span class="product-category">Kids</span>
-          <h3>Kids Casual Shoes</h3>
-          <p>Great for everyday outings.</p>
-          <p class="product-price">KSh 1,600</p>
-          <label for="size9">Select kids' size:</label>
-          <select id="size9" class="shoe-size">
-            <option value="">Choose size</option>
-            <option>25</option><option>26</option><option>27</option>
-            <option>28</option><option>29</option><option>30</option>
-            <option>31</option><option>32</option><option>33</option>
-            <option>34</option><option>35</option>
-          </select>
-          <button class="order-button"
-            onclick="orderSneaker('Kids Casual Shoes', 1600, 'size9')">
-            Order on WhatsApp
-          </button>
-        </div>
-      </article>
-
-    </section>
   </main>
 
-  <footer style="text-align:center; padding:20px;">
+  <footer class="store-footer">
+    <p><strong>Tariq Sneakers Store</strong></p>
+    <p>Step Out in Style.</p>
+    <p>Men | Ladies | Kids</p>
     <p>&copy; 2026 Tariq Sneakers Store. All rights reserved.</p>
   </footer>
 
   <script>
-    function filterProducts(category, button) {
-      const products = document.querySelectorAll('.product-card');
-      const buttons = document.querySelectorAll('.filter-button');
+    // Replace these sample products, prices and photos
+    // with your actual stock when you are ready.
 
-      buttons.forEach(function(item) {
-        item.classList.remove('active');
-      });
+    const photo = {
+      red: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80",
+      classic: "https://images.unsplash.com/photo-1495555961986-6d4c1ecb7be3?auto=format&fit=crop&w=600&q=80",
+      urban: "https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=600&q=80",
+      running: "https://images.unsplash.com/photo-1460353581641-37baddab0fa2?auto=format&fit=crop&w=600&q=80",
+      white: "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?auto=format&fit=crop&w=600&q=80",
+      sport: "https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=600&q=80",
+      casual: "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=600&q=80",
+      fashion: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=600&q=80",
+      everyday: "https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&w=600&q=80",
+      kids: "https://images.unsplash.com/photo-1514989940723-e8e51635b782?auto=format&fit=crop&w=600&q=80"
+    };
 
-      button.classList.add('active');
+    const products = [
+      // MEN - 10 products
+      {name:"Red Sport Sneakers", category:"men", price:3500, image:"red", description:"Sporty style for everyday wear."},
+      {name:"Classic Street Sneakers", category:"men", price:3000, image:"classic", description:"A classic casual look."},
+      {name:"Urban Low-Top Sneakers", category:"men", price:3200, image:"urban", description:"Modern low-top style."},
+      {name:"Active Running Shoes", category:"men", price:3800, image:"running", description:"For workouts and daily walks."},
+      {name:"White Everyday Sneakers", category:"men", price:2800, image:"white", description:"Easy to pair with your outfits."},
+      {name:"Sport Comfort Shoes", category:"men", price:3400, image:"sport", description:"Comfortable casual footwear."},
+      {name:"Casual Lifestyle Sneakers", category:"men", price:2900, image:"casual", description:"A versatile everyday option."},
+      {name:"Smart Fashion Sneakers", category:"men", price:3600, image:"fashion", description:"A stylish addition to your look."},
+      {name:"Daily Comfort Sneakers", category:"men", price:2500, image:"everyday", description:"Made for daily casual outfits."},
+      {name:"Street Style Sneakers", category:"men", price:3300, image:"classic", description:"Fresh streetwear-inspired style."},
 
-      products.forEach(function(product) {
-        if (
-          category === 'all' ||
-          product.dataset.category === category
-        ) {
-          product.style.display = '';
-        } else {
-          product.style.display = 'none';
-        }
-      });
+      // LADIES - 10 products
+      {name:"Ladies Chic Sneakers", category:"ladies", price:2800, image:"fashion", description:"Stylish shoes for casual outings."},
+      {name:"Ladies Running Shoes", category:"ladies", price:3800, image:"running", description:"For an active lifestyle."},
+      {name:"Ladies White Sneakers", category:"ladies", price:3000, image:"white", description:"A versatile wardrobe favourite."},
+      {name:"Ladies Urban Sneakers", category:"ladies", price:3200, image:"urban", description:"Modern everyday style."},
+      {name:"Ladies Sport Sneakers", category:"ladies", price:3500, image:"sport", description:"Sporty looks and casual comfort."},
+      {name:"Ladies Casual Shoes", category:"ladies", price:2600, image:"casual", description:"Easy to style for everyday wear."},
+      {name:"Ladies Comfort Sneakers", category:"ladies", price:2500, image:"everyday", description:"An everyday footwear option."},
+      {name:"Ladies Red Sneakers", category:"ladies", price:3100, image:"red", description:"Add a bold touch to your outfit."},
+      {name:"Ladies Street Style", category:"ladies", price:3300, image:"classic", description:"A relaxed streetwear look."},
+      {name:"Ladies Fashion Trainers", category:"ladies", price:3600, image:"fashion", description:"Fashionable casual footwear."},
+
+      // KIDS - 10 products
+      {name:"Kids Everyday Sneakers", category:"kids", price:1800, image:"kids", description:"Comfort for little feet."},
+      {name:"Kids Sport Sneakers", category:"kids", price:2200, image:"sport", description:"For playtime and adventures."},
+      {name:"Kids Red Sneakers", category:"kids", price:1900, image:"red", description:"Bright sporty style."},
+      {name:"Kids White Sneakers", category:"kids", price:2000, image:"white", description:"A simple everyday look."},
+      {name:"Kids Casual Shoes", category:"kids", price:1600, image:"casual", description:"Great for everyday outings."},
+      {name:"Kids Running Shoes", category:"kids", price:2300, image:"running", description:"For active little feet."},
+      {name:"Kids Urban Sneakers", category:"kids", price:2100, image:"urban", description:"Cool casual style."},
+      {name:"Kids Classic Sneakers", category:"kids", price:1750, image:"classic", description:"A classic everyday option."},
+      {name:"Kids Comfort Trainers", category:"kids", price:1950, image:"everyday", description:"Comfortable casual trainers."},
+      {name:"Kids Fashion Sneakers", category:"kids", price:2250, image:"kids", description:"A fun style for outings."}
+    ];
+
+    const productsGrid = document.getElementById("productsGrid");
+    const resultsCount = document.getElementById("resultsCount");
+    const filterButtons = document.querySelectorAll(".filter-button");
+
+    function getSizes(category) {
+      if (category === "kids") {
+        return Array.from({length: 11}, (_, i) => i + 25);
+      }
+
+      return Array.from({length: 10}, (_, i) => i + 36);
     }
 
-    function orderSneaker(productName, price, sizeId) {
-  const size = document.getElementById(sizeId).value;
+    function renderProducts(category = "all") {
+      const filtered = category === "all"
+        ? products
+        : products.filter(product => product.category === category);
 
-  if (!size) {
-    alert('Please select your shoe size first.');
-    return;
-  }
+      resultsCount.textContent = "Showing " + filtered.length + " products";
 
-  const message =
-    'Hello Tariq Sneakers Store! I would like to order:\n\n' +
-    'Product: ' + productName + '\n' +
-    'Shoe size: ' + size + '\n' +
-    'Price: KSh ' + price.toLocaleString('en-KE') + '\n\n' +
-    'Please confirm availability and delivery details.';
+      productsGrid.innerHTML = filtered.map(product => {
+        const productIndex = products.indexOf(product);
+        const sizeOptions = getSizes(product.category)
+          .map(size => `<option value="${size}">${size}</option>`)
+          .join("");
 
-  const whatsappUrl =
-    'https://wa.me/25415464542?text=' +
-    encodeURIComponent(message);
+        const categoryName = {
+          men: "Men",
+          ladies: "Ladies",
+          kids: "Kids"
+        }[product.category];
 
-  window.open(whatsappUrl, '_blank');
-}
+        return `
+          <article class="product-card">
+            <img
+              src="${photo[product.image]}"
+              alt="${product.name}"
+              loading="lazy"
+              onerror="this.onerror=null;this.src='${photo.white}'"
+            >
+
+            <div class="product-info">
+              <span class="product-category">${categoryName}</span>
+              <h3>${product.name}</h3>
+              <p class="product-description">${product.description}</p>
+              <p class="product-price">KSh ${product.price.toLocaleString("en-KE")}</p>
+
+              <label for="size-${productIndex}">
+                Select shoe size:
+              </label>
+
+              <select id="size-${productIndex}">
+                <option value="">Choose size</option>
+                ${sizeOptions}
+              </select>
+
+              <button class="order-button"
+                onclick="orderSneaker(${productIndex})">
+                Order on WhatsApp
+              </button>
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    filterButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        filterButtons.forEach(item => item.classList.remove("active"));
+        button.classList.add("active");
+        renderProducts(button.dataset.filter);
+      });
+    });
+
+    function orderSneaker(productIndex) {
+      const product = products[productIndex];
+      const size = document.getElementById("size-" + productIndex).value;
+
+      if (!size) {
+        alert("Please select your shoe size first.");
+        return;
+      }
+
+      const message =
+        "Hello Tariq Sneakers Store! I would like to order:\n\n" +
+        "Product: " + product.name + "\n" +
+        "Category: " + product.category + "\n" +
+        "Size: " + size + "\n" +
+        "Price: KSh " + product.price.toLocaleString("en-KE") + "\n\n" +
+        "Please confirm availability and delivery details.";
+
+      const whatsappUrl =
+        "https://wa.me/25415464542?text=" +
+        encodeURIComponent(message);
+
+      window.open(whatsappUrl, "_blank");
+    }
+
+    renderProducts();
   </script>
 
 </body>
