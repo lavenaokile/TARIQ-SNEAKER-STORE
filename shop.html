@@ -3,16 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Shop Sneakers | Tariq Sneakers Store</title>
-  <meta name="description" content="Shop men's, ladies' and kids' sneakers at Tariq Sneakers Store. Choose your style and order through WhatsApp.">
-
-  <link rel="stylesheet" href="style.css">
+  <meta name="description" content="Shop men's, ladies' and kids' sneakers at Tariq Sneakers Store.">
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -24,18 +19,12 @@
     .store-header {
       background: #111;
       color: white;
-      padding: 18px 15px;
       text-align: center;
+      padding: 18px 12px;
     }
 
-    .store-header h2 {
-      margin: 0 0 14px;
-      color: #fff;
-    }
-
-    .store-header h2 span {
-      color: #ff233f;
-    }
+    .store-header h2 { margin: 0 0 14px; }
+    .store-header h2 span { color: #ff233f; }
 
     .store-header nav {
       display: flex;
@@ -50,14 +39,12 @@
       font-weight: bold;
     }
 
-    .store-header nav a:hover {
-      color: #ff233f;
-    }
+    .store-header nav a:hover { color: #ff233f; }
 
     .shop-container {
       max-width: 1250px;
       margin: auto;
-      padding: 25px 16px 45px;
+      padding: 20px 15px 40px;
     }
 
     .shop-heading {
@@ -65,14 +52,23 @@
       padding: 15px 0;
     }
 
-    .shop-heading h1 {
-      font-size: 34px;
-      margin-bottom: 10px;
-    }
+    .shop-heading h1 { font-size: 32px; }
 
     .shop-heading p {
       color: #555;
-      line-height: 1.6;
+      line-height: 1.5;
+    }
+
+    .search-box {
+      display: block;
+      width: 100%;
+      max-width: 650px;
+      margin: 22px auto;
+      padding: 15px;
+      font-size: 16px;
+      border: 1px solid #bbb;
+      border-radius: 8px;
+      background: white;
     }
 
     .category-filters {
@@ -80,57 +76,53 @@
       justify-content: center;
       flex-wrap: wrap;
       gap: 10px;
-      margin: 25px 0;
+      margin: 20px 0;
     }
 
     .filter-button {
-      background: #fff;
-      color: #111;
+      padding: 10px 19px;
       border: 1px solid #111;
-      padding: 11px 20px;
       border-radius: 25px;
-      cursor: pointer;
-      font-size: 15px;
+      background: white;
+      color: #111;
       font-weight: bold;
+      cursor: pointer;
     }
 
-    .filter-button:hover,
-    .filter-button.active {
+    .filter-button.active,
+    .filter-button:hover {
       background: #e60023;
-      color: white;
       border-color: #e60023;
+      color: white;
     }
 
-    .results-count {
-      margin: 15px 0;
-      color: #555;
-    }
+    .results-count { color: #555; margin: 18px 0; }
 
     .products-grid {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 20px;
+      gap: 18px;
     }
 
     .product-card {
       background: white;
+      border: 1px solid #e4e4e4;
       border-radius: 10px;
       overflow: hidden;
-      border: 1px solid #e4e4e4;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.06);
       display: flex;
       flex-direction: column;
+      box-shadow: 0 3px 10px rgba(0,0,0,.05);
     }
 
     .product-card img {
       width: 100%;
-      height: 220px;
+      height: 200px;
       object-fit: cover;
       background: #eee;
     }
 
     .product-info {
-      padding: 15px;
+      padding: 14px;
       display: flex;
       flex-direction: column;
       flex: 1;
@@ -141,13 +133,9 @@
       font-size: 12px;
       font-weight: bold;
       text-transform: uppercase;
-      letter-spacing: 1px;
     }
 
-    .product-info h3 {
-      font-size: 17px;
-      margin: 8px 0;
-    }
+    .product-info h3 { font-size: 16px; margin: 8px 0; }
 
     .product-description {
       color: #666;
@@ -157,100 +145,176 @@
     }
 
     .product-price {
-      font-size: 20px;
+      font-size: 19px;
       font-weight: bold;
       margin: 10px 0;
     }
 
     .product-info label {
       display: block;
-      margin: 8px 0 6px;
+      margin: 8px 0 5px;
       font-size: 14px;
       font-weight: bold;
     }
 
-    .product-info select {
+    .product-info select,
+    .cart-item select {
       width: 100%;
       padding: 10px;
       border: 1px solid #ccc;
       border-radius: 5px;
       background: white;
+    }
+
+    .add-button,
+    .checkout-button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 12px;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      background: #e60023;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .add-button:hover,
+    .checkout-button:hover { background: #111; }
+
+    .cart-section {
+      margin-top: 40px;
+      padding: 22px;
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+    }
+
+    .cart-section h2 { margin-top: 0; }
+
+    .cart-empty { color: #666; }
+
+    .cart-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      padding: 16px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .cart-item h3 {
+      font-size: 16px;
+      margin: 0 0 7px;
+    }
+
+    .cart-item p {
+      margin: 6px 0;
+      color: #555;
       font-size: 14px;
     }
 
-    .order-button {
-      width: 100%;
-      background: #e60023;
-      color: white;
-      border: none;
+    .cart-item-controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .quantity-button {
+      min-width: 36px;
+      padding: 8px;
+      border: 1px solid #bbb;
+      background: white;
       border-radius: 5px;
-      padding: 12px 8px;
-      margin-top: 12px;
       cursor: pointer;
-      font-size: 14px;
+    }
+
+    .quantity-number {
+      min-width: 22px;
+      text-align: center;
       font-weight: bold;
     }
 
-    .order-button:hover {
-      background: #111;
+    .remove-button {
+      padding: 8px 10px;
+      border: none;
+      border-radius: 5px;
+      background: #eee;
+      color: #a00018;
+      cursor: pointer;
+    }
+
+    .cart-line-total {
+      text-align: right;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    .cart-summary {
+      max-width: 420px;
+      margin: 20px 0 0 auto;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      padding: 8px 0;
+    }
+
+    .grand-total {
+      font-size: 21px;
+      font-weight: bold;
+      border-top: 1px solid #ddd;
+      margin-top: 8px;
+      padding-top: 15px;
+    }
+
+    .checkout-button:disabled {
+      background: #999;
+      cursor: not-allowed;
     }
 
     .store-footer {
       background: #111;
       color: white;
       text-align: center;
-      padding: 25px 15px;
-      line-height: 1.8;
+      padding: 24px 12px;
+      line-height: 1.7;
     }
 
-    .store-footer p {
-      margin: 5px 0;
+    .no-results {
+      grid-column: 1 / -1;
+      padding: 30px;
+      text-align: center;
+      color: #666;
+      background: white;
+      border-radius: 8px;
     }
 
     @media (max-width: 1000px) {
-      .products-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
+      .products-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     }
 
     @media (max-width: 650px) {
-      .products-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 12px;
-      }
-
-      .product-card img {
-        height: 155px;
-      }
-
-      .product-info {
-        padding: 10px;
-      }
-
-      .product-info h3 {
-        font-size: 15px;
-      }
-
-      .product-price {
-        font-size: 17px;
-      }
-
-      .shop-heading h1 {
-        font-size: 27px;
-      }
-
-      .filter-button {
-        padding: 9px 14px;
-      }
+      .products-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 11px; }
+      .product-card img { height: 145px; }
+      .product-info { padding: 10px; }
+      .product-info h3 { font-size: 14px; }
+      .product-price { font-size: 17px; }
+      .shop-heading h1 { font-size: 26px; }
+      .cart-section { padding: 14px; }
+      .cart-item { grid-template-columns: 1fr; }
+      .cart-line-total { text-align: left; }
     }
   </style>
 </head>
 
 <body>
-
   <header class="store-header">
     <h2>TARIQ <span>SNEAKERS</span> STORE</h2>
-
     <nav>
       <a href="index.html">Home</a>
       <a href="shop.html">Shop</a>
@@ -260,34 +324,53 @@
   </header>
 
   <main class="shop-container">
-
     <section class="shop-heading">
       <h1>Find Your Perfect Sneakers 👟</h1>
-      <p>Fresh styles for every step. Shop men's, ladies' and kids' shoes.</p>
-      <p>Choose your favourite pair and order directly through WhatsApp!</p>
+      <p>Fresh styles for men, ladies and kids.</p>
+      <p>Choose your shoes, add them to your cart and order through WhatsApp.</p>
     </section>
 
+    <input
+      type="search"
+      class="search-box"
+      id="searchInput"
+      placeholder="🔍 Search shoes by name..."
+      aria-label="Search shoes by name"
+    >
+
     <div class="category-filters">
-      <button class="filter-button active" data-filter="all">
-        All Shoes
-      </button>
-      <button class="filter-button" data-filter="men">
-        Men
-      </button>
-      <button class="filter-button" data-filter="ladies">
-        Ladies
-      </button>
-      <button class="filter-button" data-filter="kids">
-        Kids
-      </button>
+      <button class="filter-button active" data-filter="all">All Shoes</button>
+      <button class="filter-button" data-filter="men">Men</button>
+      <button class="filter-button" data-filter="ladies">Ladies</button>
+      <button class="filter-button" data-filter="kids">Kids</button>
     </div>
 
-    <p class="results-count" id="resultsCount">
-      Showing 30 products
-    </p>
-
+    <p class="results-count" id="resultsCount">Showing 30 products</p>
     <section class="products-grid" id="productsGrid"></section>
 
+    <section class="cart-section" id="cart">
+      <h2>🛒 Your Shopping Cart (<span id="cartCount">0</span>)</h2>
+      <div id="cartItems">
+        <p class="cart-empty">Your cart is empty. Add some shoes to get started!</p>
+      </div>
+
+      <div class="cart-summary">
+        <div class="summary-row">
+          <span>Total pairs</span>
+          <strong id="pairCount">0</strong>
+        </div>
+        <div class="summary-row grand-total">
+          <span>Total price</span>
+          <span id="cartTotal">KSh 0</span>
+        </div>
+        <p style="font-size:13px;color:#666;">
+          Delivery charges, if any, will be confirmed with the store.
+        </p>
+        <button id="checkoutButton" class="checkout-button" disabled>
+          Checkout on WhatsApp
+        </button>
+      </div>
+    </section>
   </main>
 
   <footer class="store-footer">
@@ -298,10 +381,9 @@
   </footer>
 
   <script>
-    // Replace these sample products, prices and photos
-    // with your actual stock when you are ready.
+    const WHATSAPP_NUMBER = "254713838941";
 
-    const photo = {
+    const photos = {
       red: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80",
       classic: "https://images.unsplash.com/photo-1495555961986-6d4c1ecb7be3?auto=format&fit=crop&w=600&q=80",
       urban: "https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=600&q=80",
@@ -315,65 +397,90 @@
     };
 
     const products = [
-      // MEN - 10 products
-      {name:"Red Sport Sneakers", category:"men", price:3500, image:"red", description:"Sporty style for everyday wear."},
-      {name:"Classic Street Sneakers", category:"men", price:3000, image:"classic", description:"A classic casual look."},
-      {name:"Urban Low-Top Sneakers", category:"men", price:3200, image:"urban", description:"Modern low-top style."},
-      {name:"Active Running Shoes", category:"men", price:3800, image:"running", description:"For workouts and daily walks."},
-      {name:"White Everyday Sneakers", category:"men", price:2800, image:"white", description:"Easy to pair with your outfits."},
-      {name:"Sport Comfort Shoes", category:"men", price:3400, image:"sport", description:"Comfortable casual footwear."},
-      {name:"Casual Lifestyle Sneakers", category:"men", price:2900, image:"casual", description:"A versatile everyday option."},
-      {name:"Smart Fashion Sneakers", category:"men", price:3600, image:"fashion", description:"A stylish addition to your look."},
-      {name:"Daily Comfort Sneakers", category:"men", price:2500, image:"everyday", description:"Made for daily casual outfits."},
-      {name:"Street Style Sneakers", category:"men", price:3300, image:"classic", description:"Fresh streetwear-inspired style."},
+      // MEN: 10 products
+      {name:"Red Sport Sneakers",category:"men",price:3500,image:"red",description:"Sporty style for everyday wear."},
+      {name:"Classic Street Sneakers",category:"men",price:3000,image:"classic",description:"A classic casual look."},
+      {name:"Urban Low-Top Sneakers",category:"men",price:3200,image:"urban",description:"Modern low-top style."},
+      {name:"Active Running Shoes",category:"men",price:3800,image:"running",description:"For workouts and daily walks."},
+      {name:"White Everyday Sneakers",category:"men",price:2800,image:"white",description:"Easy to pair with outfits."},
+      {name:"Sport Comfort Shoes",category:"men",price:3400,image:"sport",description:"Comfortable casual footwear."},
+      {name:"Casual Lifestyle Sneakers",category:"men",price:2900,image:"casual",description:"A versatile everyday option."},
+      {name:"Smart Fashion Sneakers",category:"men",price:3600,image:"fashion",description:"A stylish addition to your look."},
+      {name:"Daily Comfort Sneakers",category:"men",price:2500,image:"everyday",description:"For everyday casual outfits."},
+      {name:"Street Style Sneakers",category:"men",price:3300,image:"classic",description:"Streetwear-inspired style."},
 
-      // LADIES - 10 products
-      {name:"Ladies Chic Sneakers", category:"ladies", price:2800, image:"fashion", description:"Stylish shoes for casual outings."},
-      {name:"Ladies Running Shoes", category:"ladies", price:3800, image:"running", description:"For an active lifestyle."},
-      {name:"Ladies White Sneakers", category:"ladies", price:3000, image:"white", description:"A versatile wardrobe favourite."},
-      {name:"Ladies Urban Sneakers", category:"ladies", price:3200, image:"urban", description:"Modern everyday style."},
-      {name:"Ladies Sport Sneakers", category:"ladies", price:3500, image:"sport", description:"Sporty looks and casual comfort."},
-      {name:"Ladies Casual Shoes", category:"ladies", price:2600, image:"casual", description:"Easy to style for everyday wear."},
-      {name:"Ladies Comfort Sneakers", category:"ladies", price:2500, image:"everyday", description:"An everyday footwear option."},
-      {name:"Ladies Red Sneakers", category:"ladies", price:3100, image:"red", description:"Add a bold touch to your outfit."},
-      {name:"Ladies Street Style", category:"ladies", price:3300, image:"classic", description:"A relaxed streetwear look."},
-      {name:"Ladies Fashion Trainers", category:"ladies", price:3600, image:"fashion", description:"Fashionable casual footwear."},
+      // LADIES: 10 products
+      {name:"Ladies Chic Sneakers",category:"ladies",price:2800,image:"fashion",description:"Stylish shoes for casual outings."},
+      {name:"Ladies Running Shoes",category:"ladies",price:3800,image:"running",description:"For an active lifestyle."},
+      {name:"Ladies White Sneakers",category:"ladies",price:3000,image:"white",description:"A versatile wardrobe favourite."},
+      {name:"Ladies Urban Sneakers",category:"ladies",price:3200,image:"urban",description:"Modern everyday style."},
+      {name:"Ladies Sport Sneakers",category:"ladies",price:3500,image:"sport",description:"Sporty casual comfort."},
+      {name:"Ladies Casual Shoes",category:"ladies",price:2600,image:"casual",description:"Easy to style every day."},
+      {name:"Ladies Comfort Sneakers",category:"ladies",price:2500,image:"everyday",description:"An everyday footwear option."},
+      {name:"Ladies Red Sneakers",category:"ladies",price:3100,image:"red",description:"A bold touch for your outfit."},
+      {name:"Ladies Street Style",category:"ladies",price:3300,image:"classic",description:"A relaxed streetwear look."},
+      {name:"Ladies Fashion Trainers",category:"ladies",price:3600,image:"fashion",description:"Fashionable casual footwear."},
 
-      // KIDS - 10 products
-      {name:"Kids Everyday Sneakers", category:"kids", price:1800, image:"kids", description:"Comfort for little feet."},
-      {name:"Kids Sport Sneakers", category:"kids", price:2200, image:"sport", description:"For playtime and adventures."},
-      {name:"Kids Red Sneakers", category:"kids", price:1900, image:"red", description:"Bright sporty style."},
-      {name:"Kids White Sneakers", category:"kids", price:2000, image:"white", description:"A simple everyday look."},
-      {name:"Kids Casual Shoes", category:"kids", price:1600, image:"casual", description:"Great for everyday outings."},
-      {name:"Kids Running Shoes", category:"kids", price:2300, image:"running", description:"For active little feet."},
-      {name:"Kids Urban Sneakers", category:"kids", price:2100, image:"urban", description:"Cool casual style."},
-      {name:"Kids Classic Sneakers", category:"kids", price:1750, image:"classic", description:"A classic everyday option."},
-      {name:"Kids Comfort Trainers", category:"kids", price:1950, image:"everyday", description:"Comfortable casual trainers."},
-      {name:"Kids Fashion Sneakers", category:"kids", price:2250, image:"kids", description:"A fun style for outings."}
+      // KIDS: 10 products
+      {name:"Kids Everyday Sneakers",category:"kids",price:1800,image:"kids",description:"Comfort for little feet."},
+      {name:"Kids Sport Sneakers",category:"kids",price:2200,image:"sport",description:"For playtime and adventures."},
+      {name:"Kids Red Sneakers",category:"kids",price:1900,image:"red",description:"Bright sporty style."},
+      {name:"Kids White Sneakers",category:"kids",price:2000,image:"white",description:"A simple everyday look."},
+      {name:"Kids Casual Shoes",category:"kids",price:1600,image:"casual",description:"Great for everyday outings."},
+      {name:"Kids Running Shoes",category:"kids",price:2300,image:"running",description:"For active little feet."},
+      {name:"Kids Urban Sneakers",category:"kids",price:2100,image:"urban",description:"Cool casual style."},
+      {name:"Kids Classic Sneakers",category:"kids",price:1750,image:"classic",description:"A classic everyday option."},
+      {name:"Kids Comfort Trainers",category:"kids",price:1950,image:"everyday",description:"Comfortable casual trainers."},
+      {name:"Kids Fashion Sneakers",category:"kids",price:2250,image:"kids",description:"A fun style for outings."}
     ];
+
+    let selectedCategory = "all";
+    let cart = [];
 
     const productsGrid = document.getElementById("productsGrid");
     const resultsCount = document.getElementById("resultsCount");
-    const filterButtons = document.querySelectorAll(".filter-button");
+    const searchInput = document.getElementById("searchInput");
+    const cartItems = document.getElementById("cartItems");
+    const checkoutButton = document.getElementById("checkoutButton");
 
-    function getSizes(category) {
-      if (category === "kids") {
-        return Array.from({length: 11}, (_, i) => i + 25);
-      }
-
-      return Array.from({length: 10}, (_, i) => i + 36);
+    function money(amount) {
+      return "KSh " + amount.toLocaleString("en-KE");
     }
 
-    function renderProducts(category = "all") {
-      const filtered = category === "all"
-        ? products
-        : products.filter(product => product.category === category);
+    function sizesFor(category) {
+      const first = category === "kids" ? 25 : 36;
+      const last = category === "kids" ? 35 : 45;
+      return Array.from({length: last - first + 1}, (_, i) => first + i);
+    }
+
+    function renderProducts() {
+      const searchTerm = searchInput.value.trim().toLowerCase();
+
+      const filtered = products
+        .map((product, index) => ({...product, index}))
+        .filter(product => {
+          const matchesCategory =
+            selectedCategory === "all" ||
+            product.category === selectedCategory;
+
+          const matchesSearch =
+            product.name.toLowerCase().includes(searchTerm) ||
+            product.description.toLowerCase().includes(searchTerm) ||
+            product.category.toLowerCase().includes(searchTerm);
+
+          return matchesCategory && matchesSearch;
+        });
 
       resultsCount.textContent = "Showing " + filtered.length + " products";
 
+      if (filtered.length === 0) {
+        productsGrid.innerHTML =
+          '<div class="no-results">No shoes found. Try another search.</div>';
+        return;
+      }
+
       productsGrid.innerHTML = filtered.map(product => {
-        const productIndex = products.indexOf(product);
-        const sizeOptions = getSizes(product.category)
+        const options = sizesFor(product.category)
           .map(size => `<option value="${size}">${size}</option>`)
           .join("");
 
@@ -386,30 +493,23 @@
         return `
           <article class="product-card">
             <img
-              src="${photo[product.image]}"
+              src="${photos[product.image]}"
               alt="${product.name}"
               loading="lazy"
-              onerror="this.onerror=null;this.src='${photo.white}'"
+              onerror="this.onerror=null;this.src='${photos.white}'"
             >
-
             <div class="product-info">
               <span class="product-category">${categoryName}</span>
               <h3>${product.name}</h3>
               <p class="product-description">${product.description}</p>
-              <p class="product-price">KSh ${product.price.toLocaleString("en-KE")}</p>
-
-              <label for="size-${productIndex}">
-                Select shoe size:
-              </label>
-
-              <select id="size-${productIndex}">
+              <p class="product-price">${money(product.price)}</p>
+              <label for="size-${product.index}">Select shoe size:</label>
+              <select id="size-${product.index}">
                 <option value="">Choose size</option>
-                ${sizeOptions}
+                ${options}
               </select>
-
-              <button class="order-button"
-                onclick="orderSneaker(${productIndex})">
-                Order on WhatsApp
+              <button class="add-button" onclick="addToCart(${product.index})">
+                Add to Cart
               </button>
             </div>
           </article>
@@ -417,40 +517,158 @@
       }).join("");
     }
 
-    filterButtons.forEach(button => {
+    document.querySelectorAll(".filter-button").forEach(button => {
       button.addEventListener("click", () => {
-        filterButtons.forEach(item => item.classList.remove("active"));
+        selectedCategory = button.dataset.filter;
+
+        document.querySelectorAll(".filter-button").forEach(item => {
+          item.classList.remove("active");
+        });
+
         button.classList.add("active");
-        renderProducts(button.dataset.filter);
+        renderProducts();
       });
     });
 
-    function orderSneaker(productIndex) {
+    searchInput.addEventListener("input", renderProducts);
+
+    function addToCart(productIndex) {
       const product = products[productIndex];
-      const size = document.getElementById("size-" + productIndex).value;
+      const sizeSelect = document.getElementById("size-" + productIndex);
+      const size = sizeSelect.value;
 
       if (!size) {
-        alert("Please select your shoe size first.");
+        alert("Please select a shoe size first.");
+        sizeSelect.focus();
         return;
       }
 
-      const message =
-        "Hello Tariq Sneakers Store! I would like to order:\n\n" +
-        "Product: " + product.name + "\n" +
-        "Category: " + product.category + "\n" +
-        "Size: " + size + "\n" +
-        "Price: KSh " + product.price.toLocaleString("en-KE") + "\n\n" +
-        "Please confirm availability and delivery details.";
+      // Same product and size share one cart line.
+      const existing = cart.find(item =>
+        item.productIndex === productIndex && item.size === size
+      );
 
-      const whatsappUrl =
-        "https://wa.me/25415464542?text=" +
-        encodeURIComponent(message);
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cart.push({
+          productIndex,
+          size,
+          quantity: 1
+        });
+      }
 
-      window.open(whatsappUrl, "_blank");
+      renderCart();
+
+      document.getElementById("cart").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
     }
 
-    renderProducts();
-  </script>
+    function changeQuantity(cartIndex, change) {
+      cart[cartIndex].quantity += change;
 
+      if (cart[cartIndex].quantity <= 0) {
+        cart.splice(cartIndex, 1);
+      }
+
+      renderCart();
+    }
+
+    function removeFromCart(cartIndex) {
+      cart.splice(cartIndex, 1);
+      renderCart();
+    }
+
+    function renderCart() {
+      const pairCount = cart.reduce(
+        (total, item) => total + item.quantity, 0
+      );
+
+      const total = cart.reduce((sum, item) => {
+        return sum +
+          products[item.productIndex].price * item.quantity;
+      }, 0);
+
+      document.getElementById("cartCount").textContent = pairCount;
+      document.getElementById("pairCount").textContent = pairCount;
+      document.getElementById("cartTotal").textContent = money(total);
+
+      checkoutButton.disabled = cart.length === 0;
+
+      if (cart.length === 0) {
+        cartItems.innerHTML =
+          '<p class="cart-empty">Your cart is empty. Add some shoes to get started!</p>';
+        return;
+      }
+
+      cartItems.innerHTML = cart.map((item, index) => {
+        const product = products[item.productIndex];
+        const lineTotal = product.price * item.quantity;
+
+        return `
+          <div class="cart-item">
+            <div>
+              <h3>${product.name}</h3>
+              <p>Size: ${item.size}</p>
+              <p>Price per pair: ${money(product.price)}</p>
+              <div class="cart-item-controls">
+                <button class="quantity-button"
+                  aria-label="Decrease quantity"
+                  onclick="changeQuantity(${index}, -1)">−</button>
+                <span class="quantity-number">${item.quantity}</span>
+                <button class="quantity-button"
+                  aria-label="Increase quantity"
+                  onclick="changeQuantity(${index}, 1)">+</button>
+                <button class="remove-button"
+                  onclick="removeFromCart(${index})">Remove</button>
+              </div>
+            </div>
+            <div class="cart-line-total">${money(lineTotal)}</div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    checkoutButton.addEventListener("click", () => {
+      if (cart.length === 0) {
+        alert("Your cart is empty.");
+        return;
+      }
+
+      const total = cart.reduce((sum, item) => {
+        return sum +
+          products[item.productIndex].price * item.quantity;
+      }, 0);
+
+      let message = "Hello Tariq Sneakers Store! I would like to place an order:\n\n";
+
+      cart.forEach((item, index) => {
+        const product = products[item.productIndex];
+
+        message +=
+          (index + 1) + ". " + product.name + "\n" +
+          "Category: " + product.category + "\n" +
+          "Size: " + item.size + "\n" +
+          "Quantity: " + item.quantity + "\n" +
+          "Price per pair: " + money(product.price) + "\n" +
+          "Line total: " + money(product.price * item.quantity) + "\n\n";
+      });
+
+      message +=
+        "TOTAL: " + money(total) + "\n\n" +
+        "Please confirm stock availability and delivery charges. Thank you!";
+
+      const whatsappUrl =
+        "https://wa.me/" + WHATSAPP_NUMBER +
+        "?text=" + encodeURIComponent(message);
+
+      window.open(whatsappUrl, "_blank");
+    });
+
+    renderProducts();
+    renderCart();
+  </script>
 </body>
 </html>
